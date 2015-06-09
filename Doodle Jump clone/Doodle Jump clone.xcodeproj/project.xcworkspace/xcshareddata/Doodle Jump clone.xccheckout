@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1EFDDB00-38B3-45D5-A625-D5FAC0156196</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Doodle Jump clone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>AE0AEEC5120081AC6E692D587515AAE5EF5A1B39</key>
+		<string>https://github.com/Fenkins/Doodle-Jump-clone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Doodle Jump clone/Doodle Jump clone.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>AE0AEEC5120081AC6E692D587515AAE5EF5A1B39</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Fenkins/Doodle-Jump-clone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>AE0AEEC5120081AC6E692D587515AAE5EF5A1B39</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AE0AEEC5120081AC6E692D587515AAE5EF5A1B39</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Doodle%20Jump%20clone</string>
+		</dict>
+	</array>
+</dict>
+</plist>

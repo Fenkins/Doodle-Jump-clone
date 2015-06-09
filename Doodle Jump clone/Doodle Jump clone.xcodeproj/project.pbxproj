@@ -20,6 +20,7 @@
 		AAA32FFD1B2741420012AA8D /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA32FF81B2741420012AA8D /* ball.png */; };
 		AAA32FFE1B2741420012AA8D /* ballSQ1.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA32FF91B2741420012AA8D /* ballSQ1.png */; };
 		AAA32FFF1B2741420012AA8D /* ballSQ2.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA32FFA1B2741420012AA8D /* ballSQ2.png */; };
+		AAA330031B27465A0012AA8D /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA330021B27465A0012AA8D /* GameViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		AAA32FF81B2741420012AA8D /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
 		AAA32FF91B2741420012AA8D /* ballSQ1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballSQ1.png; sourceTree = "<group>"; };
 		AAA32FFA1B2741420012AA8D /* ballSQ2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ballSQ2.png; sourceTree = "<group>"; };
+		AAA330011B27465A0012AA8D /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameViewController.h; path = ../GameViewController.h; sourceTree = "<group>"; };
+		AAA330021B27465A0012AA8D /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameViewController.m; path = ../GameViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 		AAA32FCD1B273D900012AA8D /* Doodle Jump clone */ = {
 			isa = PBXGroup;
 			children = (
+				AAA330011B27465A0012AA8D /* GameViewController.h */,
+				AAA330021B27465A0012AA8D /* GameViewController.m */,
 				AAA32FD21B273D900012AA8D /* AppDelegate.h */,
 				AAA32FD31B273D900012AA8D /* AppDelegate.m */,
 				AAA32FD51B273D900012AA8D /* ViewController.h */,
@@ -252,6 +257,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA330031B27465A0012AA8D /* GameViewController.m in Sources */,
 				AAA32FD71B273D900012AA8D /* ViewController.m in Sources */,
 				AAA32FD41B273D900012AA8D /* AppDelegate.m in Sources */,
 				AAA32FD11B273D900012AA8D /* main.m in Sources */,
