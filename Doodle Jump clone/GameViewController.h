@@ -19,8 +19,8 @@ float UpMovement;
     NSTimer *Movement;
 }
 
--(IBAction)StartGame:(id)sender;
--(void)Moving;
--(void)Bounce;
+- (IBAction)StartGame:(id)sender;
+- (void)Moving;
+- (void)Bounce;
 
 @end

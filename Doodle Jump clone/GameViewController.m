@@ -14,7 +14,7 @@
 
 @implementation GameViewController
 
--(void)Bounce {
+- (void)Bounce {
     Ball.animationImages = [NSArray arrayWithObjects:
                             [UIImage imageNamed:@"ballSQ1.png"],
                             [UIImage imageNamed:@"ballSQ2.png"],
@@ -25,9 +25,10 @@
     [Ball startAnimating];
     
     UpMovement = 5;
+}
 
 
--(void)Moving {
+- (void)Moving {
     Ball.center = CGPointMake(Ball.center.x, Ball.center.y - UpMovement);
     if ((CGRectIntersectsRect(Ball.frame, Platform.frame)) && (UpMovement < -2)) {
         [self Bounce];
@@ -35,7 +36,7 @@
     UpMovement = UpMovement - 0.1;
 }
 
--(IBAction)StartGame:(id)sender {
+- (IBAction)StartGame:(id)sender {
     Start.hidden = YES;
     UpMovement = -5;
     Movement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(Moving) userInfo:nil repeats:YES];
