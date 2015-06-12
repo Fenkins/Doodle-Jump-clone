@@ -9,12 +9,20 @@
 #import <UIKit/UIKit.h>
 
 float UpMovement;
+int RandomPosition;
+int Platform2SideMovement;
+int Platform4SideMovement;
+CGFloat screenWidth;
 
 @interface GameViewController : UIViewController
 {
     IBOutlet UIButton *Start;
     IBOutlet UIImageView *Ball;
     IBOutlet UIImageView *Platform;
+    IBOutlet UIImageView *Platform1;
+    IBOutlet UIImageView *Platform2;
+    IBOutlet UIImageView *Platform3;
+    IBOutlet UIImageView *Platform4;
     
     NSTimer *Movement;
 }
@@ -22,5 +30,6 @@ float UpMovement;
 - (IBAction)StartGame:(id)sender;
 - (void)Moving;
 - (void)Bounce;
+- (void)PlatformMovement;
 
 @end
