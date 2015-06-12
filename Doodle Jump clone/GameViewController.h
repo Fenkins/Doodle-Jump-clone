@@ -12,7 +12,16 @@ float UpMovement;
 int RandomPosition;
 int Platform2SideMovement;
 int Platform4SideMovement;
+
+float SideMovement;
+BOOL BallLeft;
+BOOL BallRight;
+BOOL StopSideMovement;
+
+float const MovingConstant = 0.1;
+
 CGFloat screenWidth;
+
 
 @interface GameViewController : UIViewController
 {

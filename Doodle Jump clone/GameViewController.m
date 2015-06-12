@@ -14,6 +14,23 @@
 
 @implementation GameViewController
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    StopSideMovement = NO;
+    UITouch *touch = [touches anyObject];
+    CGPoint point = [touch locationInView:self.view];
+    if (point.x < screenWidth/2){
+        BallLeft = YES;
+    } else {
+        BallRight = YES;
+    }
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    BallLeft = NO;
+    BallRight = NO;
+    StopSideMovement = YES;
+}
+
 - (void)PlatformMovement{
 
     Platform2.center = CGPointMake(Platform2.center.x + Platform2SideMovement, Platform2.center.y);
@@ -41,9 +58,38 @@
 
 
 - (void)Moving {
+    if (BallLeft == YES){
+        SideMovement -= MovingConstant * 3;
+        if (SideMovement <= -5) {
+            SideMovement = 5;
+        }
+        if (Ball.center.x <= Ball.bounds.size.width/2){
+            Ball.center = CGPointMake(screenWidth-(Ball.bounds.size.width/2), Ball.center.y);
+        }
+    }
+    if (BallRight == YES){
+        SideMovement += MovingConstant * 3;
+        if (SideMovement >= 5) {
+            SideMovement = 5;
+        }
+        if (Ball.center.x >= (screenWidth - Ball.bounds.size.width/2)){
+            Ball.center = CGPointMake(Ball.bounds.size.width/2, Ball.center.y);
+        }
+    }
+    if (StopSideMovement == YES && SideMovement > 0) {
+        SideMovement -= MovingConstant;
+        if (SideMovement < 0){
+            SideMovement = 0;
+        }
+    } else if (StopSideMovement == YES && SideMovement < 0) {
+        SideMovement += MovingConstant;
+        if (SideMovement > 0){
+            SideMovement = 0;
+        }
+    }
     [self PlatformMovement];
     
-    Ball.center = CGPointMake(Ball.center.x, Ball.center.y - UpMovement);
+    Ball.center = CGPointMake(Ball.center.x + SideMovement, Ball.center.y - UpMovement);
     if ((CGRectIntersectsRect(Ball.frame, Platform.frame)) && (UpMovement < -2)) {
         [self Bounce];
     }
