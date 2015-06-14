@@ -18,9 +18,13 @@ BOOL BallLeft;
 BOOL BallRight;
 BOOL StopSideMovement;
 
+float PlatformDropDownFor;
+
 float const MovingConstant = 0.1;
 
+
 CGFloat screenWidth;
+CGFloat screenHeight;
 
 
 @interface GameViewController : UIViewController
@@ -40,5 +44,6 @@ CGFloat screenWidth;
 - (void)Moving;
 - (void)Bounce;
 - (void)PlatformMovement;
+- (void)PlatformDropDown;
 
 @end
