@@ -13,6 +13,11 @@
 @end
 
 @implementation GameViewController
+- (void) GameEnded {
+    if (Ball.center.y > screenHeight) {
+        [self performSegueWithIdentifier:@"gameEnded" sender:self];
+    }
+}
 
 - (void) PlatformDropDown {
     if (Ball.center.y > 500.0) {
@@ -120,6 +125,10 @@
 
 
 - (void)Moving {
+    // Lets check if the game ended
+    [self GameEnded];
+    printf("BALL CENTER IS %f                             ", Ball.center.y);
+    
     // We are dont want for ball to go higher then half of the screen, so if it is going to, we will limit it there
     if (Ball.center.y < screenHeight/2) {
         Ball.center = CGPointMake(Ball.center.x, screenHeight/2);

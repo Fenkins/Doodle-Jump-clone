@@ -129,11 +129,26 @@
                         <outlet property="Platform3" destination="LHh-Qj-9LQ" id="ufD-Ig-61e"/>
                         <outlet property="Platform4" destination="m6B-sF-yTt" id="9YG-ja-Stk"/>
                         <outlet property="Start" destination="xj8-k2-F0w" id="iUv-wF-DyP"/>
+                        <segue destination="FVw-S1-x5v" kind="modal" identifier="gameEnded" id="sBz-kM-WB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFe-dr-0Wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="559" y="406"/>
+        </scene>
+        <!--Game Ended View Controller-->
+        <scene sceneID="gyd-ci-J0s">
+            <objects>
+                <viewController id="FVw-S1-x5v" customClass="GameEndedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ri6-Ib-2dr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tim-ND-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="406"/>
         </scene>
     </scenes>
     <resources>

@@ -45,5 +45,6 @@ CGFloat screenHeight;
 - (void)Bounce;
 - (void)PlatformMovement;
 - (void)PlatformDropDown;
+- (void)GameEnded;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA975CAE1B2DDD180092B848 /* GameEndedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA975CAD1B2DDD180092B848 /* GameEndedViewController.m */; };
 		AAA32FD11B273D900012AA8D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA32FD01B273D900012AA8D /* main.m */; };
 		AAA32FD41B273D900012AA8D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA32FD31B273D900012AA8D /* AppDelegate.m */; };
 		AAA32FD71B273D900012AA8D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA32FD61B273D900012AA8D /* ViewController.m */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA975CAC1B2DDD180092B848 /* GameEndedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameEndedViewController.h; sourceTree = "<group>"; };
+		AA975CAD1B2DDD180092B848 /* GameEndedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameEndedViewController.m; sourceTree = "<group>"; };
 		AAA32FCB1B273D900012AA8D /* Doodle Jump clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Doodle Jump clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA32FCF1B273D900012AA8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAA32FD01B273D900012AA8D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,6 +101,8 @@
 			children = (
 				AAA330011B27465A0012AA8D /* GameViewController.h */,
 				AAA330021B27465A0012AA8D /* GameViewController.m */,
+				AA975CAC1B2DDD180092B848 /* GameEndedViewController.h */,
+				AA975CAD1B2DDD180092B848 /* GameEndedViewController.m */,
 				AAA32FD21B273D900012AA8D /* AppDelegate.h */,
 				AAA32FD31B273D900012AA8D /* AppDelegate.m */,
 				AAA32FD51B273D900012AA8D /* ViewController.h */,
@@ -259,6 +264,7 @@
 			files = (
 				AAA330031B27465A0012AA8D /* GameViewController.m in Sources */,
 				AAA32FD71B273D900012AA8D /* ViewController.m in Sources */,
+				AA975CAE1B2DDD180092B848 /* GameEndedViewController.m in Sources */,
 				AAA32FD41B273D900012AA8D /* AppDelegate.m in Sources */,
 				AAA32FD11B273D900012AA8D /* main.m in Sources */,
 			);
@@ -459,6 +465,7 @@
 				AAA32FF01B273D910012AA8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AAA32FF11B273D910012AA8D /* Build configuration list for PBXNativeTarget "Doodle Jump cloneTests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +474,7 @@
 				AAA32FF31B273D910012AA8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
