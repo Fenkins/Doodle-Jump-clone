@@ -60,8 +60,9 @@
 - (void)Moving {
     if (BallLeft == YES){
         SideMovement -= MovingConstant * 3;
+        //Maximum speed is 5
         if (SideMovement <= -5) {
-            SideMovement = 5;
+            SideMovement = -5;
         }
         if (Ball.center.x <= Ball.bounds.size.width/2){
             Ball.center = CGPointMake(screenWidth-(Ball.bounds.size.width/2), Ball.center.y);
@@ -69,6 +70,7 @@
     }
     if (BallRight == YES){
         SideMovement += MovingConstant * 3;
+        //Maximum speed if 5
         if (SideMovement >= 5) {
             SideMovement = 5;
         }
