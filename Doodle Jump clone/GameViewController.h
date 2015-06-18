@@ -22,6 +22,17 @@ float PlatformDropDownFor;
 
 float const MovingConstant = 0.1;
 
+int ScoreNumber;
+int HighScoreNumber;
+int AddedScore;
+int LevelNumber;
+
+BOOL PlatformUsed;
+BOOL Platform1Used;
+BOOL Platform2Used;
+BOOL Platform3Used;
+BOOL Platform4Used;
+
 
 CGFloat screenWidth;
 CGFloat screenHeight;
@@ -37,6 +48,12 @@ CGFloat screenHeight;
     IBOutlet UIImageView *Platform3;
     IBOutlet UIImageView *Platform4;
     
+    IBOutlet UILabel *Score;
+    IBOutlet UILabel *GameOver;
+    IBOutlet UILabel *FinalScore;
+    IBOutlet UILabel *HighScore;
+    IBOutlet UIButton *RestartGameOut;
+    
     NSTimer *Movement;
 }
 
@@ -45,5 +62,7 @@ CGFloat screenHeight;
 - (void)Bounce;
 - (void)PlatformMovement;
 - (void)PlatformDropDown;
+- (void)Scoring;
+- (void)GameOver;
 
 @end

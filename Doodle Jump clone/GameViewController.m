@@ -13,6 +13,16 @@
 @end
 
 @implementation GameViewController
+-(void) Scoring {
+    // We raising a score as the ball goes higher scoring is ticking with Moving method
+    ScoreNumber += AddedScore;
+    AddedScore -= 1;
+    if (AddedScore < 0) {
+        AddedScore = 0;
+    }
+    Score.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    printf("OUR SCORE IS       %i    ",ScoreNumber);
+}
 
 - (void) PlatformDropDown {
     if (Ball.center.y > 500.0) {
@@ -72,26 +82,31 @@
         RandomPosition = arc4random()%248;
         RandomPosition += 36;
         Platform.center = CGPointMake(RandomPosition, -6);
+        PlatformUsed = NO;
     }
     if (Platform1.center.y > (screenHeight - Platform1.bounds.size.height)) {
         RandomPosition = arc4random()%248;
         RandomPosition += 36;
         Platform1.center = CGPointMake(RandomPosition, -6);
+        Platform1Used = NO;
     }
     if (Platform2.center.y > (screenHeight - Platform2.bounds.size.height)) {
         RandomPosition = arc4random()%248;
         RandomPosition += 36;
         Platform2.center = CGPointMake(RandomPosition, -6);
+        Platform2Used = NO;
     }
     if (Platform3.center.y > (screenHeight - Platform3.bounds.size.height)) {
         RandomPosition = arc4random()%248;
         RandomPosition += 36;
         Platform3.center = CGPointMake(RandomPosition, -6);
+        Platform3Used = NO;
     }
     if (Platform4.center.y >(screenHeight - Platform4.bounds.size.height)) {
         RandomPosition = arc4random()%248;
         RandomPosition += 36;
         Platform4.center = CGPointMake(RandomPosition, -6);
+        Platform4Used = NO;
     }
 }
 
@@ -162,24 +177,46 @@
     if ((CGRectIntersectsRect(Ball.frame, Platform.frame)) && (UpMovement < -2)) {
         [self Bounce];
         [self PlatformDropDown];
+        if (PlatformUsed == NO) {
+            AddedScore = 10;
+            PlatformUsed = YES;
+        }
     }
     if ((CGRectIntersectsRect(Ball.frame, Platform1.frame)) && (UpMovement < -2)) {
         [self Bounce];
         [self PlatformDropDown];
+        if (Platform1Used == NO) {
+            AddedScore = 10;
+            Platform1Used = YES;
+        }
     }
     if ((CGRectIntersectsRect(Ball.frame, Platform2.frame)) && (UpMovement < -2)) {
         [self Bounce];
         [self PlatformDropDown];
+        if (Platform2Used == NO) {
+            AddedScore = 10;
+            Platform2Used = YES;
+        }
     }
     if ((CGRectIntersectsRect(Ball.frame, Platform3.frame)) && (UpMovement < -2)) {
         [self Bounce];
         [self PlatformDropDown];
+        if (Platform3Used == NO) {
+            AddedScore = 10;
+            Platform3Used = YES;
+        }
     }
     if ((CGRectIntersectsRect(Ball.frame, Platform4.frame)) && (UpMovement < -2)) {
         [self Bounce];
         [self PlatformDropDown];
+        if (Platform4Used == NO) {
+            AddedScore = 10;
+            Platform4Used = YES;
+        }
     }
     UpMovement -= MovingConstant;
+    
+    [self Scoring];
 }
 
 - (IBAction)StartGame:(id)sender {
@@ -223,6 +260,19 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
+    //New labels
+    GameOver.hidden = YES;
+    FinalScore.hidden = YES;
+    HighScore.hidden = YES;
+    RestartGameOut.hidden = YES;
+    Score = 0;
+    AddedScore = 0;
+    LevelNumber = 1;
+    PlatformUsed = NO;
+    Platform1Used = NO;
+    Platform2Used = NO;
+    Platform3Used = NO;
+    Platform4Used = NO;
 }
 
 - (void)didReceiveMemoryWarning {
