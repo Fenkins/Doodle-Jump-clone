@@ -21,7 +21,7 @@
         AddedScore = 0;
     }
     Score.text = [NSString stringWithFormat:@"%i", ScoreNumber];
-    printf("OUR SCORE IS       %i    ",ScoreNumber);
+
 }
 
 - (void) PlatformDropDown {
@@ -265,7 +265,7 @@
     FinalScore.hidden = YES;
     HighScore.hidden = YES;
     RestartGameOut.hidden = YES;
-    Score = 0;
+    ScoreNumber = 0;
     AddedScore = 0;
     LevelNumber = 1;
     PlatformUsed = NO;
