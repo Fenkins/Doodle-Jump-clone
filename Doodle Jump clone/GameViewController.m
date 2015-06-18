@@ -13,13 +13,6 @@
 @end
 
 @implementation GameViewController
-- (void) GameEnded {
-    if (Ball.center.y > screenHeight) {
-        [GameEndedOut sendActionsForControlEvents:UIControlEventTouchUpInside];
-        [Movement invalidate];
-        Ball.center = CGPointMake(0.0, 0.0);
-    }
-}
 
 - (void) PlatformDropDown {
     if (Ball.center.y > 500.0) {
@@ -127,10 +120,6 @@
 
 
 - (void)Moving {
-    // Lets check if the game ended
-    [self GameEnded];
-    printf("BALL CENTER IS %f                             ", Ball.center.y);
-    
     // We are dont want for ball to go higher then half of the screen, so if it is going to, we will limit it there
     if (Ball.center.y < screenHeight/2) {
         Ball.center = CGPointMake(Ball.center.x, screenHeight/2);
@@ -222,6 +211,7 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -233,11 +223,6 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    Start.hidden = NO;
-    Ball.center = CGPointMake(148.0, 401.0);
 }
 
 - (void)didReceiveMemoryWarning {
