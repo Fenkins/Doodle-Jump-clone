@@ -30,6 +30,7 @@ CGFloat screenHeight;
 @interface GameViewController : UIViewController
 {
     IBOutlet UIButton *Start;
+    IBOutlet UIButton *GameEndedOut;
     IBOutlet UIImageView *Ball;
     IBOutlet UIImageView *Platform;
     IBOutlet UIImageView *Platform1;

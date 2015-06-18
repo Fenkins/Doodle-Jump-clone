@@ -118,18 +118,31 @@
                                 <rect key="frame" x="206" y="211" width="100" height="15"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dIn-Im-a0r">
+                                <rect key="frame" x="-60" y="-60" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                <state key="normal" title="Ended">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="FVw-S1-x5v" kind="modal" id="dC8-JU-yo1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="Ball" destination="0dp-Pr-7jW" id="8oQ-P0-SLV"/>
+                        <outlet property="GameEndedOut" destination="dIn-Im-a0r" id="CEn-dE-feU"/>
                         <outlet property="Platform" destination="fKt-23-jXg" id="eWZ-QM-ncX"/>
                         <outlet property="Platform1" destination="qkV-dx-p09" id="0ih-cf-1hf"/>
                         <outlet property="Platform2" destination="0FZ-Pf-yCI" id="F39-m8-LHk"/>
                         <outlet property="Platform3" destination="LHh-Qj-9LQ" id="ufD-Ig-61e"/>
                         <outlet property="Platform4" destination="m6B-sF-yTt" id="9YG-ja-Stk"/>
                         <outlet property="Start" destination="xj8-k2-F0w" id="iUv-wF-DyP"/>
-                        <segue destination="FVw-S1-x5v" kind="modal" identifier="gameEnded" id="sBz-kM-WB6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CFe-dr-0Wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,7 +156,26 @@
                     <view key="view" contentMode="scaleToFill" id="Ri6-Ib-2dr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="EdB-WZ-jkr">
+                                <rect key="frame" x="85" y="234" width="150" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <state key="normal" title="RESTART">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="RestartGame:" destination="FVw-S1-x5v" eventType="touchUpInside" id="guu-R8-RCx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tim-ND-nbr" userLabel="First Responder" sceneMemberID="firstResponder"/>

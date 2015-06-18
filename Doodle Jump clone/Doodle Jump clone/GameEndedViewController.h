@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface GameEndedViewController : UIViewController
+- (IBAction)RestartGame:(id)sender;
 
 @end

@@ -15,7 +15,9 @@
 @implementation GameViewController
 - (void) GameEnded {
     if (Ball.center.y > screenHeight) {
-        [self performSegueWithIdentifier:@"gameEnded" sender:self];
+        [GameEndedOut sendActionsForControlEvents:UIControlEventTouchUpInside];
+        [Movement invalidate];
+        Ball.center = CGPointMake(0.0, 0.0);
     }
 }
 
@@ -220,7 +222,6 @@
 }
 
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -232,6 +233,11 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = screenRect.size.width;
     screenHeight = screenRect.size.height;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    Start.hidden = NO;
+    Ball.center = CGPointMake(148.0, 401.0);
 }
 
 - (void)didReceiveMemoryWarning {
