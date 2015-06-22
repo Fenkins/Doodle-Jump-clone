@@ -13,6 +13,29 @@
 @end
 
 @implementation GameViewController
+-(void) GameOver {
+    Ball.hidden = YES;
+    Platform.hidden = YES;
+    Platform1.hidden = YES;
+    Platform2.hidden = YES;
+    Platform3.hidden = YES;
+    Platform4.hidden = YES;
+    Score.hidden = YES;
+    GameOver.hidden = NO;
+    RestartGameOut.hidden = NO;
+    FinalScore.hidden = NO;
+    
+    FinalScore.text = [NSString stringWithFormat:@"Final score is %i", ScoreNumber];
+    [Movement invalidate];
+    if (ScoreNumber > HighScoreNumber) {
+        HighScoreNumber = ScoreNumber;
+        [[NSUserDefaults standardUserDefaults] setInteger:ScoreNumber forKey:@"HighScoreSaved"];
+        HighScore.hidden = NO;
+    }
+    UpMovement = 0;
+    SideMovement = 0;
+}
+
 -(void) Scoring {
     // We raising a score as the ball goes higher scoring is ticking with Moving method
     ScoreNumber += AddedScore;
@@ -21,6 +44,13 @@
         AddedScore = 0;
     }
     Score.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    
+    if (ScoreNumber > (screenHeight + Ball.bounds.size.height) && ScoreNumber < 1000) {
+        LevelNumber = 2;
+    }
+    if (ScoreNumber/LevelNumber > 500) {
+        LevelNumber += 1;
+    }
 
 }
 
@@ -135,6 +165,10 @@
 
 
 - (void)Moving {
+    if (Ball.center.y > (screenHeight + Ball.bounds.size.height)) {
+        [self GameOver];
+    }
+    
     // We are dont want for ball to go higher then half of the screen, so if it is going to, we will limit it there
     if (Ball.center.y < screenHeight/2) {
         Ball.center = CGPointMake(Ball.center.x, screenHeight/2);
@@ -273,6 +307,8 @@
     Platform2Used = NO;
     Platform3Used = NO;
     Platform4Used = NO;
+    
+    HighScoreNumber = [[NSUserDefaults standardUserDefaults] integerForKey:@"HighScoreSaved"];
 }
 
 - (void)didReceiveMemoryWarning {
