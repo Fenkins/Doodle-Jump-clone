@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreMotion/CoreMotion.h>
 
 float UpMovement;
 int RandomPosition;
@@ -47,17 +48,19 @@ CGFloat screenHeight;
     IBOutlet UIImageView *Platform2;
     IBOutlet UIImageView *Platform3;
     IBOutlet UIImageView *Platform4;
+    IBOutlet UIButton *controlsSwitchOutlet;
+    
     
     IBOutlet UILabel *Score;
     IBOutlet UILabel *GameOver;
     IBOutlet UILabel *FinalScore;
     IBOutlet UILabel *HighScore;
-    IBOutlet UIButton *RestartGameOut;
     
     NSTimer *Movement;
 }
 
 - (IBAction)StartGame:(id)sender;
+- (IBAction)controlsSwitch:(id)sender;
 - (void)Moving;
 - (void)Bounce;
 - (void)PlatformMovement;

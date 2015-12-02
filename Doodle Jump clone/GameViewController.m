@@ -9,11 +9,16 @@
 #import "GameViewController.h"
 
 @interface GameViewController ()
-
+@property (nonatomic) BOOL controlsSwitched;
+@property (nonatomic) BOOL gameOver;
+@property (nonatomic) CMMotionManager *motionManager;
 @end
 
 @implementation GameViewController
 -(void) GameOver {
+    self.gameOver = YES;
+    [Start setTitle:@"RESTART GAME" forState:UIControlStateNormal];
+    Start.hidden = NO;
     Ball.hidden = YES;
     Platform.hidden = YES;
     Platform1.hidden = YES;
@@ -22,7 +27,6 @@
     Platform4.hidden = YES;
     Score.hidden = YES;
     GameOver.hidden = NO;
-    RestartGameOut.hidden = NO;
     FinalScore.hidden = NO;
     
     FinalScore.text = [NSString stringWithFormat:@"Final score is %i", ScoreNumber];
@@ -75,20 +79,24 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    StopSideMovement = NO;
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.view];
-    if (point.x < screenWidth/2){
-        BallLeft = YES;
-    } else {
-        BallRight = YES;
+    if (!self.controlsSwitched) {
+        StopSideMovement = NO;
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self.view];
+        if (point.x < screenWidth/2){
+            BallLeft = YES;
+        } else {
+            BallRight = YES;
+        }
     }
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    BallLeft = NO;
-    BallRight = NO;
-    StopSideMovement = YES;
+    if (!self.controlsSwitched) {
+        BallLeft = NO;
+        BallRight = NO;
+        StopSideMovement = YES;
+    }
 }
 
 - (void)PlatformMovement{
@@ -251,37 +259,52 @@
     UpMovement -= MovingConstant;
     
     [self Scoring];
+    if (self.controlsSwitched) {
+        [self listenToAccelerometer];
+    }
 }
 
 - (IBAction)StartGame:(id)sender {
-    Start.hidden = YES;
-    Platform1.hidden = NO;
-    Platform2.hidden = NO;
-    Platform3.hidden = NO;
-    Platform4.hidden = NO;
-    
-    UpMovement = -5;
-    Movement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(Moving) userInfo:nil repeats:YES];
-    
-    // Generating random position (between 36 and 284)
-    RandomPosition = arc4random()%248;
-    RandomPosition += Platform1.bounds.size.width/2;
-    Platform1.center = CGPointMake(RandomPosition, 448);
-    RandomPosition = arc4random()%248;
-    RandomPosition += Platform2.bounds.size.width/2;
-    Platform2.center = CGPointMake(RandomPosition, 336);
-    RandomPosition = arc4random()%248;
-    RandomPosition += Platform3.bounds.size.width/2;
-    Platform3.center = CGPointMake(RandomPosition, 224);
-    RandomPosition = arc4random()%248;
-    RandomPosition += Platform4.bounds.size.width/2;
-    Platform4.center = CGPointMake(RandomPosition, 112);
-    
-    Platform2SideMovement = 2;
-    Platform4SideMovement = -2;
+    if (!self.gameOver) {
+        Start.hidden = YES;
+        Platform1.hidden = NO;
+        Platform2.hidden = NO;
+        Platform3.hidden = NO;
+        Platform4.hidden = NO;
+        
+        UpMovement = -5;
+        Movement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(Moving) userInfo:nil repeats:YES];
+        
+        // Generating random position (between 36 and 284)
+        RandomPosition = arc4random()%248;
+        RandomPosition += Platform1.bounds.size.width/2;
+        Platform1.center = CGPointMake(RandomPosition, 448);
+        RandomPosition = arc4random()%248;
+        RandomPosition += Platform2.bounds.size.width/2;
+        Platform2.center = CGPointMake(RandomPosition, 336);
+        RandomPosition = arc4random()%248;
+        RandomPosition += Platform3.bounds.size.width/2;
+        Platform3.center = CGPointMake(RandomPosition, 224);
+        RandomPosition = arc4random()%248;
+        RandomPosition += Platform4.bounds.size.width/2;
+        Platform4.center = CGPointMake(RandomPosition, 112);
+        
+        Platform2SideMovement = 2;
+        Platform4SideMovement = -2;
+    } else {
+        [self dismissViewControllerAnimated:true completion:nil];
+    }
 }
 
-
+- (IBAction)controlsSwitch:(id)sender {
+    if (self.controlsSwitched) {
+        [controlsSwitchOutlet setTitle:@"accelerometer" forState:UIControlStateNormal];
+        self.controlsSwitched = NO;
+    } else {
+        [controlsSwitchOutlet setTitle:@"display" forState:UIControlStateNormal];
+        self.controlsSwitched = YES;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -290,6 +313,7 @@
     Platform2.hidden = YES;
     Platform3.hidden = YES;
     Platform4.hidden = YES;
+    self.controlsSwitched = NO;
     // Just wonna know screen width
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenWidth = screenRect.size.width;
@@ -298,7 +322,6 @@
     GameOver.hidden = YES;
     FinalScore.hidden = YES;
     HighScore.hidden = YES;
-    RestartGameOut.hidden = YES;
     ScoreNumber = 0;
     AddedScore = 0;
     LevelNumber = 1;
@@ -309,6 +332,18 @@
     Platform4Used = NO;
     
     HighScoreNumber = [[NSUserDefaults standardUserDefaults] integerForKey:@"HighScoreSaved"];
+}
+
+- (void)listenToAccelerometer {
+    if (_motionManager == NULL) {
+        _motionManager = [[CMMotionManager alloc]init];
+        _motionManager.deviceMotionUpdateInterval = 0.025;
+        [_motionManager startDeviceMotionUpdates];
+    }
+    
+    CMAcceleration gravity = _motionManager.deviceMotion.gravity;
+    NSLog(@"%f",gravity.x);
+    NSLog(@"%f",gravity.y);
 }
 
 - (void)didReceiveMemoryWarning {
