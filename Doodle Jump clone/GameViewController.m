@@ -10,6 +10,7 @@
 
 @interface GameViewController ()
 @property (nonatomic) BOOL controlSwitched;
+@property (nonatomic) CMMotionManager *motionManager;
 @end
 
 @implementation GameViewController
@@ -75,20 +76,24 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    StopSideMovement = NO;
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:self.view];
-    if (point.x < screenWidth/2){
-        BallLeft = YES;
-    } else {
-        BallRight = YES;
+    if (!self.controlSwitched) {
+        StopSideMovement = NO;
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView:self.view];
+        if (point.x < screenWidth/2){
+            BallLeft = YES;
+        } else {
+            BallRight = YES;
+        }
     }
 }
 
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    BallLeft = NO;
-    BallRight = NO;
-    StopSideMovement = YES;
+    if (!self.controlSwitched) {
+        BallLeft = NO;
+        BallRight = NO;
+        StopSideMovement = YES;
+    }
 }
 
 - (void)PlatformMovement{
@@ -251,6 +256,9 @@
     UpMovement -= MovingConstant;
     
     [self Scoring];
+    if (self.controlSwitched) {
+        [self listenToAccelerometer];
+    }
 }
 
 - (IBAction)StartGame:(id)sender {
@@ -291,7 +299,22 @@
     }
 }
 
-
+- (void)listenToAccelerometer {
+    if (_motionManager == NULL) {
+        _motionManager = [[CMMotionManager alloc]init];
+        _motionManager.deviceMotionUpdateInterval = 0.025;
+        [_motionManager startDeviceMotionUpdates];
+    }
+    CMAcceleration gravity = _motionManager.deviceMotion.gravity;
+    NSLog(@"Grav X %f",gravity.x);
+    if (gravity.x < 0) {
+        BallLeft = YES;
+        BallRight = NO;
+    } else {
+        BallRight = YES;
+        BallLeft = NO;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
