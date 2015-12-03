@@ -9,7 +9,7 @@
 #import "GameViewController.h"
 
 @interface GameViewController ()
-
+@property (nonatomic) BOOL controlSwitched;
 @end
 
 @implementation GameViewController
@@ -279,6 +279,16 @@
     
     Platform2SideMovement = 2;
     Platform4SideMovement = -2;
+}
+
+- (IBAction)controlSwitchButton:(id)sender {
+    if (self.controlSwitched) {
+        [controlSwitchOutlet setTitle:@"accelerometer" forState:UIControlStateNormal];
+        self.controlSwitched = NO;
+    } else {
+        [controlSwitchOutlet setTitle:@"touches" forState:UIControlStateNormal];
+        self.controlSwitched = YES;
+    }
 }
 
 

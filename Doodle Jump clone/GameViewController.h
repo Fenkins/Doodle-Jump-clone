@@ -54,10 +54,13 @@ CGFloat screenHeight;
     IBOutlet UILabel *HighScore;
     IBOutlet UIButton *RestartGameOut;
     
+    IBOutlet UIButton *controlSwitchOutlet;
+    
     NSTimer *Movement;
 }
 
 - (IBAction)StartGame:(id)sender;
+- (IBAction)controlSwitchButton:(id)sender;
 - (void)Moving;
 - (void)Bounce;
 - (void)PlatformMovement;
